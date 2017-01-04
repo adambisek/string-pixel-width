@@ -6,7 +6,7 @@
 
 String pixel width measurement on the backend in Javascript.
 
-Why I created this package? Read more about purpose: http://TOOD
+[Why I created this package? Read more about purpose](https://medium.com/@adambisek/text-pixel-width-measuring-on-javascript-backend-node-js-2b82bea97fab#.8ypyiffyw)
 
 Installation
 ------------
