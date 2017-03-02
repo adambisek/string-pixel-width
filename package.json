@@ -1,6 +1,6 @@
 {
   "name": "string-pixel-width",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "String pixel width measurement on the backend in Javascript",
   "main": "lib/index.js",
   "scripts": {
