@@ -6,29 +6,56 @@
     <div id="h1-info">433</div>
 
     <div class="sandbox"><span style="font-family: Arial; font-size: 100">~<span></span></span></div>
+    <textarea id="elFinal" style="width: 100%; height: 400px"></textarea>
 
     <script>
-      var h1 = document.getElementById('h1');
-      var info = document.getElementById('h1-info');
-      info.innerHTML = h1.offsetWidth;
+      var websafe = [
+        'Andale Mono',
+        'Arial',
+        'Comic Sans MS',
+        'Courier New',
+        'Georgia',
+        'Impact',
+        'Times New Roman',
+        'Trebuchet MS',
+        'Verdana',
+        'Webdings'
+      ]
 
-      var widths = {};
-      var sandbox = document.getElementsByClassName('sandbox')[0];
-      for (var i = 0; i <= 127; i++) {
-        if (i < 32) continue; // non-printable chars
-        if (i === 127) continue; // DELETE char
-        var letter = String.fromCharCode(i);
-        var printableLetter = (letter);
-        if (printableLetter === ' ') {
-          printableLetter = '&nbsp';
+      function checkFont(name) {
+        var h1 = document.getElementById('h1');
+        h1.style.fontFamily = name;
+        var info = document.getElementById('h1-info');
+        info.innerHTML = h1.offsetWidth;
+
+        var widths = {};
+        var sandbox = document.getElementsByClassName('sandbox')[0];
+        for (var i = 0; i <= 127; i++) {
+          if (i < 32) continue; // non-printable chars
+          if (i === 127) continue; // DELETE char
+          var letter = String.fromCharCode(i);
+          var printableLetter = (letter);
+          if (printableLetter === ' ') {
+            printableLetter = '&nbsp';
+          }
+          sandbox.innerHTML = `<span style="font-family: ${name}; font-size: 100">${printableLetter}<span>`;
+          var el = sandbox.children[0];
+          widths[letter] = el.offsetWidth;
         }
-        sandbox.innerHTML = `<span style="font-family: Arial; font-size: 100">${printableLetter}<span>`;
-        var el = sandbox.children[0];
-        widths[letter] = el.offsetWidth;
+        return widths;
       }
-      var elFinal = document.createElement('pre');
-      elFinal.innerHTML = JSON.stringify(widths);
+
+      var widths = websafe.reduce((all, font) => {
+        return Object.assign(all, {[font.toLowerCase()]: checkFont(font)});
+      }, {});
+
+      var elFinal = document.getElementById('elFinal');
+      elFinal.innerHTML = `const widthsMap = ${JSON.stringify(widths, null, 2)};
+
+export default widthsMap;
+`;
       document.body.appendChild(elFinal);
+      elFinal.select();
     </script>
 </body>
 </html>
