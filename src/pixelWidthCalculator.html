@@ -6,6 +6,7 @@
     <div id="h1-info">433</div>
 
     <div class="sandbox"><span style="font-family: Arial; font-size: 100">~<span></span></span></div>
+    <textarea id="elFinal" style="width: 100%; height: 400px"></textarea>
 
     <script>
       var websafe = [
@@ -48,9 +49,10 @@
         return Object.assign(all, {[font]: checkFont(font)});
       }, {});
 
-      var elFinal = document.createElement('pre');
+      var elFinal = document.getElementById('elFinal');
       elFinal.innerHTML = JSON.stringify(widths, null, 2);
       document.body.appendChild(elFinal);
+      elFinal.select();
     </script>
 </body>
 </html>
