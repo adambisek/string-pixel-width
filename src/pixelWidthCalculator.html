@@ -8,26 +8,31 @@
     <div class="sandbox"><span style="font-family: Arial; font-size: 100">~<span></span></span></div>
 
     <script>
-      var h1 = document.getElementById('h1');
-      var info = document.getElementById('h1-info');
-      info.innerHTML = h1.offsetWidth;
+      function checkFont(name) {
+        var h1 = document.getElementById('h1');
+        var info = document.getElementById('h1-info');
+        info.innerHTML = h1.offsetWidth;
 
-      var widths = {};
-      var sandbox = document.getElementsByClassName('sandbox')[0];
-      for (var i = 0; i <= 127; i++) {
-        if (i < 32) continue; // non-printable chars
-        if (i === 127) continue; // DELETE char
-        var letter = String.fromCharCode(i);
-        var printableLetter = (letter);
-        if (printableLetter === ' ') {
-          printableLetter = '&nbsp';
+        var widths = {};
+        var sandbox = document.getElementsByClassName('sandbox')[0];
+        for (var i = 0; i <= 127; i++) {
+          if (i < 32) continue; // non-printable chars
+          if (i === 127) continue; // DELETE char
+          var letter = String.fromCharCode(i);
+          var printableLetter = (letter);
+          if (printableLetter === ' ') {
+            printableLetter = '&nbsp';
+          }
+          sandbox.innerHTML = `<span style="font-family: Arial; font-size: 100">${printableLetter}<span>`;
+          var el = sandbox.children[0];
+          widths[letter] = el.offsetWidth;
         }
-        sandbox.innerHTML = `<span style="font-family: Arial; font-size: 100">${printableLetter}<span>`;
-        var el = sandbox.children[0];
-        widths[letter] = el.offsetWidth;
+        return widths;
       }
+
+      var widths = checkFont('Arial');
       var elFinal = document.createElement('pre');
-      elFinal.innerHTML = JSON.stringify(widths);
+      elFinal.innerHTML = JSON.stringify(widths, null, 2);
       document.body.appendChild(elFinal);
     </script>
 </body>
