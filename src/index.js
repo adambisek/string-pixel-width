@@ -1,9 +1,7 @@
-import _ from 'lodash';
+import deburr from 'lodash.deburr';
 import widthsMap from './widthsMap';
 
 const settingsDefaults = { font: 'Arial', size: 100 };
-
-const toAscii = string => _.deburr(string);
 
 const getWidth = (string, settings) => {
   const sett = { ...settingsDefaults, ...settings };
@@ -14,7 +12,7 @@ const getWidth = (string, settings) => {
     throw new Error('This font is not supported. Supported fonts are: '+available.join(', '));
   }
   let totalWidth = 0;
-  toAscii(string).split('').forEach((char) => {
+  deburr(string).split('').forEach((char) => {
     if (/[\x00-\x1F]/.test(char)) { // non-printable character
       return true;
     }
