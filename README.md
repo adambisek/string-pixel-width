@@ -40,3 +40,12 @@ console.log('This text is ' + width + 'px long in the size of 10px.');
 
 // This text is 43.5px long in the size of 10px.
 ```
+
+```
+var pixelWidth = require('string-pixel-width');
+
+const width = pixelWidth('My text ...', { font: 'impact', size: 10 });
+console.log('This text is ' + width + 'px long in the size of 10px.');
+
+// This text is 42px long in the size of 10px.
+```

@@ -10,6 +10,7 @@ test('test basic with settings', () => {
 
 test('test basic with different font', () => {
   expect(index('test string', { font: 'impact' })).toBe(420);
+  expect(index('test string', { font: 'impact', size: 10 })).toBe(42);
 });
 
 test('test diacritic', () => {
