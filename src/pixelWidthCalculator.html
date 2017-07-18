@@ -50,7 +50,10 @@
       }, {});
 
       var elFinal = document.getElementById('elFinal');
-      elFinal.innerHTML = JSON.stringify(widths, null, 2);
+      elFinal.innerHTML = `const widthsMap = ${JSON.stringify(widths, null, 2)};
+
+export default widthsMap;
+`;
       document.body.appendChild(elFinal);
       elFinal.select();
     </script>
