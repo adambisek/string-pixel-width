@@ -8,6 +8,10 @@ test('test basic with settings', () => {
   expect(index('test string', { size: 10 })).toBe(43.5);
 });
 
+test('test basic with different font', () => {
+  expect(index('test string', { font: 'impact' })).toBe(420);
+});
+
 test('test diacritic', () => {
   const lengthWithDiacritics = index('test ěščřžýáíé');
   const lengthWithoutDiacritics = index('test escrzyaie');
