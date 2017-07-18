@@ -46,7 +46,7 @@
       }
 
       var widths = websafe.reduce((all, font) => {
-        return Object.assign(all, {[font]: checkFont(font)});
+        return Object.assign(all, {[font.toLowerCase()]: checkFont(font)});
       }, {});
 
       var elFinal = document.getElementById('elFinal');

@@ -9,8 +9,9 @@ const getWidth = (string, settings) => {
   const sett = { ...settingsDefaults, ...settings };
   const font = sett.font.toLowerCase();
   const size = sett.size;
-  if (font !== 'arial') {
-    throw new Error('The only supported string is Arial only at this time.');
+  const available = Object.keys(widthsMap);
+  if (available.indexOf(font) === -1) {
+    throw new Error('This font is not supported. Supported fonts are: '+available.join(', '));
   }
   let totalWidth = 0;
   toAscii(string).split('').forEach((char) => {

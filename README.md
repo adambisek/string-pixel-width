@@ -16,6 +16,20 @@ To install the stable version:
 npm install --save string-pixel-width
 </code>
 
+Supported fonts:
+------------
+
+- Andale Mono
+- Arial
+- Comic Sans MS
+- Courier New
+- Georgia
+- Impact
+- Times New Roman
+- Trebuchet MS
+- Verdana
+- Webdings
+
 Example
 ------------
 ```
