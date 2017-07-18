@@ -9,7 +9,7 @@ const getWidth = (string, settings) => {
   const size = sett.size;
   const available = Object.keys(widthsMap);
   if (available.indexOf(font) === -1) {
-    throw new Error('This font is not supported. Supported fonts are: '+available.join(', '));
+    throw new Error(`This font is not supported. Supported fonts are: ${available.join(', ')}`);
   }
   let totalWidth = 0;
   deburr(string).split('').forEach((char) => {

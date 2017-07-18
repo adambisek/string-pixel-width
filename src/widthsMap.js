@@ -1,3 +1,4 @@
+/* eslint quotes: off, comma-dangle: off, quote-props: off */
 const widthsMap = {
   "andale mono": {
     "0": 50,
