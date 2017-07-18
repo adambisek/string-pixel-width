@@ -8,8 +8,22 @@
     <div class="sandbox"><span style="font-family: Arial; font-size: 100">~<span></span></span></div>
 
     <script>
+      var websafe = [
+        'Andale Mono',
+        'Arial',
+        'Comic Sans MS',
+        'Courier New',
+        'Georgia',
+        'Impact',
+        'Times New Roman',
+        'Trebuchet MS',
+        'Verdana',
+        'Webdings'
+      ]
+
       function checkFont(name) {
         var h1 = document.getElementById('h1');
+        h1.style.fontFamily = name;
         var info = document.getElementById('h1-info');
         info.innerHTML = h1.offsetWidth;
 
@@ -23,14 +37,17 @@
           if (printableLetter === ' ') {
             printableLetter = '&nbsp';
           }
-          sandbox.innerHTML = `<span style="font-family: Arial; font-size: 100">${printableLetter}<span>`;
+          sandbox.innerHTML = `<span style="font-family: ${name}; font-size: 100">${printableLetter}<span>`;
           var el = sandbox.children[0];
           widths[letter] = el.offsetWidth;
         }
         return widths;
       }
 
-      var widths = checkFont('Arial');
+      var widths = websafe.reduce((all, font) => {
+        return Object.assign(all, {[font]: checkFont(font)});
+      }, {});
+
       var elFinal = document.createElement('pre');
       elFinal.innerHTML = JSON.stringify(widths, null, 2);
       document.body.appendChild(elFinal);
