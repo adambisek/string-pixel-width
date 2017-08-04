@@ -49,3 +49,17 @@ console.log('This text is ' + width + 'px long in the size of 10px.');
 
 // This text is 42px long in the size of 10px.
 ```
+
+How to contribute
+------------
+PRs are welcome :)
+This library uses static map of width of every ASCII letter for all supported fonts.
+
+1. Clone the repository
+2. Open file ```src/pixelWidthCalculator.html``` in your editor
+3. Add your font name into array of fonts (currently var websafe) and save
+4. Open up ```src/pixelWidthCalculator.html``` in Google Chrome. It should look like this:
+![PHPStan](docs/string-pixel-width-1.png)
+5. Map of withs will be generated for you - copy it and replace content of file ```src/widthsMap.js```
+
+**Please everytime make sure you don't broke existing fonts - remove any font or broke his widths.**
