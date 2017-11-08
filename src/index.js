@@ -7,6 +7,7 @@ const getWidth = (string, settings) => {
   const sett = { ...settingsDefaults, ...settings };
   const font = sett.font.toLowerCase();
   const size = sett.size;
+  const variant = 0 + (sett.bold ? 1 : 0) + (sett.italic ? 2 : 0);
   const available = Object.keys(widthsMap);
   if (available.indexOf(font) === -1) {
     throw new Error(`This font is not supported. Supported fonts are: ${available.join(', ')}`);
@@ -16,7 +17,7 @@ const getWidth = (string, settings) => {
     if (/[\x00-\x1F]/.test(char)) { // non-printable character
       return true;
     }
-    const width = widthsMap[font][char];
+    const width = widthsMap[font][char][variant];
     totalWidth += width;
     return true;
   });
