@@ -2,10 +2,10 @@
 <html><head>
   </head>
   <body>
-    <span id="h1" style="font-family: Arial; font-size: 100">test string</span>
+    <span id="h1" style="font-family: Arial; font-size: 100;">test string</span>
     <div id="h1-info">433</div>
 
-    <div class="sandbox"><span style="font-family: Arial; font-size: 100">~<span></span></span></div>
+    <div class="sandbox"><span style="font-family: Arial; font-size: 100;">~<span></span></span></div>
     <textarea id="elFinal" style="width: 100%; height: 400px"></textarea>
 
     <script>
@@ -19,7 +19,8 @@
         'Times New Roman',
         'Trebuchet MS',
         'Verdana',
-        'Webdings'
+        'Webdings',
+        'Open Sans'
       ]
 
       function checkFont(name) {
@@ -38,11 +39,20 @@
           if (printableLetter === ' ') {
             printableLetter = '&nbsp';
           }
-          sandbox.innerHTML = `<span style="font-family: ${name}; font-size: 100">${printableLetter}<span>`;
-          var el = sandbox.children[0];
-          widths[letter] = el.offsetWidth;
+          widths[letter] = [
+              getWidthOf(sandbox, printableLetter, name, 'normal', 'normal'),
+              getWidthOf(sandbox, printableLetter, name, 'bold', 'normal'),
+              getWidthOf(sandbox, printableLetter, name, 'normal', 'italic'),
+              getWidthOf(sandbox, printableLetter, name, 'bold', 'italic')
+          ];
         }
         return widths;
+      }
+
+      function getWidthOf(sandbox, printableLetter, name, weight, style) {
+          sandbox.innerHTML = `<span style="font-family: ${name}; font-size: 100; font-weight: ${weight}; font-style: ${style};">${printableLetter}<span>`;
+          var el = sandbox.children[0];
+          return el.offsetWidth;
       }
 
       var widths = websafe.reduce((all, font) => {

@@ -8,6 +8,18 @@ test('test basic with settings', () => {
   expect(index('test string', { size: 10 })).toBe(43.5);
 });
 
+test('test basic with bold', () => {
+  expect(index('test string', { font: 'open sans', bold: true })).toBe(512);
+});
+
+test('test basic with italic', () => {
+  expect(index('test string', { font: 'open sans', italic: true })).toBe(430);
+});
+
+test('test basic with bold italic', () => {
+  expect(index('test string', { font: 'open sans', bold: true, italic: true })).toBe(485);
+});
+
 test('test basic with different font', () => {
   expect(index('test string', { font: 'impact' })).toBe(420);
   expect(index('test string', { font: 'impact', size: 10 })).toBe(42);
