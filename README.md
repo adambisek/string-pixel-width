@@ -50,6 +50,15 @@ console.log('This text is ' + width + 'px long in the size of 10px.');
 // This text is 42px long in the size of 10px.
 ```
 
+```
+var pixelWidth = require('string-pixel-width');
+
+const width = pixelWidth('My text ...', { font: 'open sans', size: 10, bold: true, italic: true });
+console.log('This text is ' + width + 'px long in the size of 10px.');
+
+// This text is 47px long in the size of 10px using bold and italic proportions.
+```
+
 How to contribute
 ------------
 PRs are welcome :)
