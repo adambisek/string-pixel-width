@@ -42,3 +42,7 @@ test('test non-existing font', () => {
     index('foo', { font: 'bar' });
   }).toThrow();
 });
+
+test('test printable, but unregistered character', () => {
+  expect(index('‐')).toBe(50);
+});

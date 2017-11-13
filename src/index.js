@@ -17,7 +17,9 @@ const getWidth = (string, settings) => {
     if (/[\x00-\x1F]/.test(char)) { // non-printable character
       return true;
     }
-    const width = widthsMap[font][char][variant];
+    // use width of 'x' as fallback for unregistered char
+    const widths = widthsMap[font][char] || widthsMap[font].x;
+    const width = widths[variant];
     totalWidth += width;
     return true;
   });
