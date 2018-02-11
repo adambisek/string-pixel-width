@@ -23,6 +23,7 @@ test('test basic with bold italic', () => {
 test('test basic with different font', () => {
   expect(index('test string', { font: 'impact' })).toBe(420);
   expect(index('test string', { font: 'impact', size: 10 })).toBe(42);
+  expect(index('test string', { font: 'tahoma', size: 10 })).toBe(44.300000000000004);
 });
 
 test('test diacritic', () => {
