@@ -29,6 +29,7 @@ Supported fonts:
 - Trebuchet MS
 - Verdana
 - Webdings
+- Open Sans
 - Tahoma
 
 Example
