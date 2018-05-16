@@ -21,6 +21,7 @@ Supported fonts:
 
 - Andale Mono
 - Arial
+- Avenir
 - Comic Sans MS
 - Courier New
 - Georgia
