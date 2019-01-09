@@ -26,6 +26,7 @@ Supported fonts:
 - Comic Sans MS
 - Courier New
 - Georgia
+- Helvetica
 - Impact
 - Times New Roman
 - Trebuchet MS
