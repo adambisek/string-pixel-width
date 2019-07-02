@@ -8,7 +8,8 @@ const getWidth = (string, settings) => {
   const font = sett.font.toLowerCase();
   const size = sett.size;
   const variant = 0 + (sett.bold ? 1 : 0) + (sett.italic ? 2 : 0);
-  const available = Object.keys(widthsMap);
+  const map = sett.map || widthsMap;
+  const available = Object.keys(map);
   if (available.indexOf(font) === -1) {
     throw new Error(`This font is not supported. Supported fonts are: ${available.join(', ')}`);
   }
@@ -18,7 +19,7 @@ const getWidth = (string, settings) => {
       return true;
     }
     // use width of 'x' as fallback for unregistered char
-    const widths = widthsMap[font][char] || widthsMap[font].x;
+    const widths = map[font][char] || map[font].x;
     const width = widths[variant];
     totalWidth += width;
     return true;
