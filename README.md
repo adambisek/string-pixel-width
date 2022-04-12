@@ -28,6 +28,7 @@ Supported fonts:
 - Georgia
 - Helvetica
 - Impact
+- Inter
 - Times New Roman
 - Trebuchet MS
 - Verdana
